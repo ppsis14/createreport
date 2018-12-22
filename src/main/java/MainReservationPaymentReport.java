@@ -22,7 +22,7 @@ public class MainReservationPaymentReport {
             PdfWriter.getInstance(document, new FileOutputStream("./Reservation-Payment-Report.pdf"));
             document.open();
             PdfPTable compDetailTable = new PdfPTable(2);
-            Paragraph titleName = new Paragraph("รายงานแสดงสถานะการชำระเงินลูกค้าของโปรแกรมทัวร์ JAPAN NEW YEAR EXCLUSIVE (JPN-4D3N-000004)", angsanaNewFont18);
+            Paragraph titleName = new Paragraph("รายงานแสดงสถานะการชำระเงินลูกค้าของแพ็คเกจทัวร์ JAPAN NEW YEAR EXCLUSIVE (JPN-4D3N-000004)", angsanaNewFont18);
             titleName.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(titleName);
             PdfPTable tableOut = new PdfPTable(2);
@@ -91,21 +91,24 @@ public class MainReservationPaymentReport {
     }
 
     private static void buildNestedTablesBody(PdfPTable outerTable, Font font) throws IOException, DocumentException {
-        PdfPTable bodyTable = new PdfPTable(5);
-        bodyTable.setTotalWidth(new float[]{50f,110f,250f,50f,150f});
+        PdfPTable bodyTable = new PdfPTable(6);
+        bodyTable.setTotalWidth(new float[]{130f, 170f, 75f, 110f, 130f, 130f});
         bodyTable.setLockedWidth(true);
         bodyTable.setHorizontalAlignment(Element.ALIGN_CENTER);
-        bodyTable.addCell(createCell("No.\nลำดับ", font, 0.5f, 1, Element.ALIGN_CENTER));
-        bodyTable.addCell(createCell("Customer ID\nรหัสลูกค้า", font, 0.5f, 1, Element.ALIGN_CENTER));
-        bodyTable.addCell(createCell("Name\nชื่อ", font, 0.5f, 1, Element.ALIGN_CENTER));
-        bodyTable.addCell(createCell("Age\nอายุ", font, 0.5f, 1, Element.ALIGN_CENTER));
-        bodyTable.addCell(createCell("Phone Number\nเบอร์โทรศัพท์", font, 0.5f, 1, Element.ALIGN_CENTER));
-        for (int i = 0; i < 50; i++ ){
-            bodyTable.addCell(createCell(String.valueOf(++i), font, 0.5f, 1, Element.ALIGN_CENTER));
-            bodyTable.addCell(createCell("CS00000001", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Reservation Code\nรหัสการจอง", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Customer Name\nชื่อลูกค้า", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Phone No.\nเบอร์โทรศัพท์", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Deposit Payment Status\nสถานะการชำระเงินค่ามัดจำ", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Arrears Payment Status\nสถานะการชำระเงินส่วนที่เหลือ", font, 0.5f, 1, Element.ALIGN_CENTER));
+        bodyTable.addCell(createCell("Sale Name\nชื่อพนักงานขาย", font, 0.5f, 1, Element.ALIGN_CENTER));
+        for (int i = 0; i < 15; i++ ){
+            bodyTable.addCell(createCell("GER-5D4N-000001-000001", font, 0.5f, 1, Element.ALIGN_CENTER));
             bodyTable.addCell(createCell("นางสาวฑิฆัมพร สิมอุด", font, 0.5f, 1, Element.ALIGN_LEFT));
-            bodyTable.addCell(createCell(String.valueOf(++i), font, 0.5f, 1, Element.ALIGN_CENTER));
             bodyTable.addCell(createCell("0927606499", font, 0.5f, 1, Element.ALIGN_CENTER));
+            bodyTable.addCell(createCell("ชำระแล้ว", font, 0.5f, 1, Element.ALIGN_CENTER));
+            bodyTable.addCell(createCell("ชำระแล้ว", font, 0.5f, 1, Element.ALIGN_CENTER));
+            bodyTable.addCell(createCell("วิภาวดี ม่อนคุต", font, 0.5f, 1, Element.ALIGN_LEFT));
+
         }
         outerTable.addCell(bodyTable);
     }

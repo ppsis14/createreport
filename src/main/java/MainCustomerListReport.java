@@ -22,7 +22,7 @@ public class MainCustomerListReport {
             PdfWriter.getInstance(document, new FileOutputStream("./Customer-List-Report.pdf"));
             document.open();
             PdfPTable compDetailTable = new PdfPTable(2);
-            Paragraph titleName = new Paragraph("รายงานแสดงรายละเอียดลูกค้าของโปรแกรมทัวร์ JAPAN NEW YEAR EXCLUSIVE (JPN-4D3N-000004)", angsanaNewFont18);
+            Paragraph titleName = new Paragraph("รายงานแสดงรายชื่อลูกทัวร์ของแพ็คเกจทัวร์ JAPAN NEW YEAR EXCLUSIVE (JPN-4D3N-000004)", angsanaNewFont18);
             titleName.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(titleName);
             PdfPTable tableOut = new PdfPTable(2);
